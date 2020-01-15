@@ -34,16 +34,28 @@
 				<input id="price" type="number" class="form-control" placeholder="price">
 			</div>
 			<br>
-			<button id="submit" class="btn btn-primary">Submit</button>
+			<button id="deposit" class="btn btn-success">Deposit</button>
+			<button id="submit" class="btn btn-primary">Expense</button>
 			<button id="reset" class="btn btn-danger">Reset</button>
 		</form>
-		<h1 class="text-center">Expenses:</h1>
+		<h1 class="text-center">Tracker:</h1>
 		<ul id="expenses-list" class="list-group">
 
 		</ul>
 	</div>
-
-	<script type="text/javascript" src="./src/app.js"></script>
+	<script type="text/javascript">
+		(function() {
+		  if("serviceWorker" in navigator) {
+			navigator.serviceWorker.register("./service-worker.js")
+			  .then((res) => {
+				console.log(res);
+				console.log("Service Worker registered successfully.");
+			  })
+			  .catch(error => console.log("Service Worker registration failed:", error));
+		  }
+		})();
+	  </script>
+	<script type="text/javascript" src="/app.bundle.js"></script>
 </body>
 
 </html>
